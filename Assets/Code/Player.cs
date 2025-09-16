@@ -24,7 +24,7 @@ public class Player : Charecter
     public override void Init(string newName, int newHealth, int newAttackDmg)
     {
         base.Init(newName, newHealth, newAttackDmg);
-        gold = 0;
+        Gold = 0;
     }
 
     //Method

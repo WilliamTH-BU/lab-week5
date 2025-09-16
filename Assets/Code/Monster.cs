@@ -9,7 +9,7 @@ public class Monster : Charecter
 {
     //Attributes
     private int lootReward;
-    public bool MonsterDeafeated;
+    private bool deafeated = false;
     //Property
     public int LootReward
     {
@@ -21,17 +21,24 @@ public class Monster : Charecter
         }
     }
 
-    //Construter
-    public override void Init(string monsterName, int monsterHealth, int attackPower)
+    public bool Deafeated
     {
-        base.Init(monsterName, monsterHealth, attackPower);
-        LootReward = 0;
+        get { return deafeated; }
+        set { value = deafeated; }
     }
 
+    //Construter
+    public void Init(string name, int health, int power,int lootAmount)
+    {
+        base.Init(name, health, power);
+        LootReward = lootAmount;
+    }
+
+    //Method
     public override void ShowStat()
     {
         base.ShowStat();
-        Debug.Log($"Lootreward: {LootReward}");
+        Debug.Log($"Monster Loot Reward: {LootReward}");
     }
     public int DropReward()
     {

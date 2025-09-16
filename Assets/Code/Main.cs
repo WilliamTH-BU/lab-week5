@@ -15,19 +15,19 @@ public class Main : MonoBehaviour
     {
         //----------------Spawn Slime----------------
         //Initialization
-        currentMonster = Instantiate(monstersPrefabs[0]); //1
+        currentMonster = Instantiate(monstersPrefabs[0]);
 
-        currentMonster.Init("Slime", 10, 2); //2
+        currentMonster.Init("Slime", 10, 2, 5);
 
         //Add monster to list
-        monsters.Add(currentMonster); //3
+        monsters.Add(currentMonster);
 
 
         //----------------Spawn Hollow Shulker----------------
         //Initialization
         currentMonster = Instantiate(monstersPrefabs[1]);
 
-        currentMonster.Init("Hollow Shulker", 30, 15);
+        currentMonster.Init("Hollow Shulker", 30, 15, 10);
  
         //Add monster to list
         monsters.Add(currentMonster);
@@ -37,7 +37,7 @@ public class Main : MonoBehaviour
         //Initialization
         currentMonster = Instantiate(monstersPrefabs[2]);
 
-        currentMonster.Init("Undead Knight", 45, 20);
+        currentMonster.Init("Undead Knight", 45, 20, 15);
 
         //Add monster to list
         monsters.Add(currentMonster);

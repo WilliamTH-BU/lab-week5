@@ -337,8 +337,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9eec7355e84d0544840ed1b3afe5ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  monstersPrefabs: []
+  player: {fileID: 1398961015}
+  monstersPrefabs:
+  - {fileID: 1189225139016967432, guid: 1dfd585b036a2614e921753c454a64fb, type: 3}
+  - {fileID: 1962758663691366178, guid: c10fb583545af314cb3d49e8b5f3c807, type: 3}
+  - {fileID: 9103744487215918483, guid: 737581db7ad78464689dcc9bc693f480, type: 3}
   currentMonster: {fileID: 0}
   monsters: []
 --- !u!4 &1238376828

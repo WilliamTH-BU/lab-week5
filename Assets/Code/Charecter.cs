@@ -14,7 +14,7 @@ public class Charecter : MonoBehaviour
         get { return name; }
         set
         {
-            if (string.IsNullOrEmpty(value)) { name = "Error"; }
+            if (string.IsNullOrEmpty(value)) { name = "Unknown"; }
             else { name = value; }
         }
     }
@@ -28,31 +28,38 @@ public class Charecter : MonoBehaviour
             else { health = value; }
         }
     }
-    public int AttackPower { get; set; }
-    //Construter
-    public virtual void Init(string newname, int newHealth, int newAttackDmg)
+    public int AttackPower
     {
-        name = newname;
-        health = newHealth;
-        attackPower = newAttackDmg;
+        get { return attackPower; }
+        set { attackPower = value; }
+    }
+
+    //Construter
+    public virtual void Init(string newName, int newHealth, int newAttackDmg)
+    {
+        Name = newName;
+        Health = newHealth;
+        AttackPower = newAttackDmg;
     }
 
     //Method
     public virtual void ShowStat()
     {
-        Debug.Log($"Charecter Name: {Name} | Character Health: {Health} | Charecter Attack Power{AttackPower}");
+        Debug.Log($"Charecter Name: {Name} | Character Health: {Health} | Charecter Attack Power: {AttackPower}");
     }
     public void TakeDamage(int damageValue)
     {
         health = -damageValue;
     }
 
-    public bool IsAlive() { return health > 0; }
-
-   
-    /*public void Attack(target)
+    public bool IsAlive()
     {
-        Debug.Log($"{Name} attack {target} for {AttackPower} damage");
+        return health > 0;
+    }
+
+    public void Attack(Monster target)
+    {
         target.TakeDamage(AttackPower);
-    }*/
+        Debug.Log($"{Name} attack {target.Name} for {AttackPower} damage");
+    }
 }
