@@ -13,7 +13,30 @@ public class Main : MonoBehaviour
     public List<Monster> monsters = new List<Monster>();
     void Start()
     {
-        //----------------Spawn Slime----------------
+        SpawnMonster(MonsterType.Slime);
+        SpawnMonster(MonsterType.HollowShulker);
+        SpawnMonster(MonsterType.UndeadKnight);
+
+        //Show monster stat
+        foreach (var monster in monsters)
+        {
+            monster.ShowStat();
+        }
+
+        player.Init("Samton", 100, 5);
+        player.ShowStat();
+
+        Debug.Log("Fight Start -------------------");
+
+        currentMonster = monsters[0];
+
+        player.Attack(currentMonster, 20);
+        currentMonster.Attack(player, 6);
+
+        currentMonster.ShowStat();
+        player.ShowStat();
+
+        /*//----------------Spawn Slime----------------
         //Initialization
         currentMonster = Instantiate(monstersPrefabs[0]);
 
@@ -52,48 +75,24 @@ public class Main : MonoBehaviour
         player.Init("Samton", 100, 0);
         player.ShowStat();
 
+        currentMonster = monsters[0];
 
-        /*currentMonster = Instantiate<>*/
-        /*//Create New Avatar
-        Player Player1 = new Player("Samton", 100, 0, 15);
+        player.Attack(currentMonster, 20);
+        currentMonster.Attack(player, 6);
 
-        //Create Monster
-        Monster monster1 = new Monster("Slime", 10, 2, 5, false);
-        Monster monster2 = new Monster("Hollow Shulker", 25, 10, 20, false);
-        Monster monster3 = new Monster("Hollow Shulker", 25, 10, 20, false);
+        currentMonster.ShowStat();
+        player.ShowStat();*/
 
-        monsters.Add(monster1);
-        monsters.Add(monster2);
-        monsters.Add(monster3);
-        monsters.Add(new Monster("Stray Dog", 15, 10, 10, false));
+    }
+    public void SpawnMonster(MonsterType monsterType)
+    {
+        Monster monsterPrefab = monstersPrefabs[(int)monsterType];
 
-        //Show Player Stat
-        Player1.ShowStat();
+        Monster monsterObj = Instantiate(monsterPrefab);
 
-        //Show Monster Stat
-        foreach (var m in monsters)
-        {
-            m.ShowStat();
-        }
-        
-        //Take Damage Test
-        Player1.TakeDamage(25);
-        Debug.Log($"Player Name: {Player1.PlayerName} | Health: {Player1.Health} | Gold: {Player1.Gold}");
-        Debug.Log($"Hero is alive: {Player1.IsAlive()} ");
+        monsterObj.Init(monsterType);
 
-        //Player Attack Monster
-        monster1.ShowStat();
-
-        Player1.Attack(monster1);
-
-        monster1.ShowStat();
-
-        //Monster Attack Player
-        Player1.ShowStat();
-
-        monster1.Attack(Player1);
-
-        Player1.ShowStat();*/
+        monsters.Add(monsterObj);
 
     }
 }
